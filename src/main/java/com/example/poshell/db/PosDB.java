@@ -15,4 +15,5 @@ public interface PosDB {
 
     public Product getProduct(String productId);
 
+    boolean removeProductFromCartById(String productId);
 }

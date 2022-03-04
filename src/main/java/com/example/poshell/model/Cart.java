@@ -33,4 +33,7 @@ public class Cart {
 
         return stringBuilder.toString();
     }
+    public void empty(){
+        items.clear();
+    }
 }

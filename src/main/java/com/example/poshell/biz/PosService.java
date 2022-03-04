@@ -20,4 +20,8 @@ public interface PosService {
 
 
     public List<Product> products();
+
+    void clearCart();
+
+    boolean removeProductFromCartById(String productId);
 }

@@ -1,10 +1,12 @@
 package com.example.poshell.db;
 
 import com.example.poshell.model.Cart;
+import com.example.poshell.model.Item;
 import com.example.poshell.model.Product;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Component
@@ -37,6 +39,19 @@ public class PosInMemoryDB implements PosDB {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean removeProductFromCartById(String productId) {
+        Iterator iterator = getCart().getItems().iterator();
+        while(iterator.hasNext()){
+            Item item  = (Item) iterator.next();
+            if(item.getProduct().getId().equals(productId)){
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
     }
 
     private PosInMemoryDB() {
