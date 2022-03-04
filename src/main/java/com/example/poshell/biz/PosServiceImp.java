@@ -68,4 +68,16 @@ public class PosServiceImp implements PosService {
     public boolean removeProductFromCartById(String productId) {
         return posDB.removeProductFromCartById(productId);
     }
+
+    @Override
+    public boolean modifyProductCount(String id, Integer amout) {
+        Product product = null;
+        for(Item item:posDB.getCart().getItems()){
+            if(item.getProduct().getId().equals(id)){
+                item.setAmount(amout);
+                return true;
+            }
+        }
+        return false;
+    }
 }

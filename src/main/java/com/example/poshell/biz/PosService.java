@@ -24,4 +24,6 @@ public interface PosService {
     void clearCart();
 
     boolean removeProductFromCartById(String productId);
+
+    boolean modifyProductCount(String id, Integer amount);
 }

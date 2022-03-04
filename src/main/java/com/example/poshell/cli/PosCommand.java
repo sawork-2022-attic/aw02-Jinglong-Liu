@@ -55,7 +55,21 @@ public class PosCommand {
         if(posService.getCart() == null){
             return "NO Cart";
         }
-        posService.removeProductFromCartById(id);
-        return "Removed";
+        if(posService.removeProductFromCartById(id)){
+            return "Removed";
+        }
+        return "ERROR";
+    }
+    @ShellMethod(value = "Modify Product Count", key = "m")
+    public String modifyProductCount(String id,Integer amount) {
+        if(posService.getCart() == null){
+            return "NO Cart";
+        }
+        if(posService.modifyProductCount(id,amount)){
+            return "Modify." + posService.getCart().toString();
+        }
+        else{
+            return "ERROR";
+        }
     }
 }
